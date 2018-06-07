@@ -7,7 +7,7 @@ Detailed bug reporting and in-app chat for mobile games made on Android, iOS, an
 
 Collect in-game bug reports and feedback and speed up your game development cycle with Instabug. Forward your bugs automatically to Trello, Jira, Slack, Github, Gitlab & more.
 
-For more info, visit Instabug for Unity on [instabug.com](https://www.instabug.com/platforms/unity).
+For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.com/platforms/unity).
 
 ## Installation (iOS)
 
@@ -27,15 +27,46 @@ For more info, visit Instabug for Unity on [instabug.com](https://www.instabug.c
    
 3.  Open the exported project from Android Studio, and add the following changes to the build.gradle file.
 ```
-    ... allprojects { repositories { jcenter() google() maven { // TODO add this only if interested in getting SNAPSHOT releases url ‘https://oss.sonatype.org/content/repositories/snapshots’ } ... } } ... dependencies { ... compile ‘com.instabug.library:instabug:5.0.0.3.19-SNAPSHOT’ } ...
+        ...
+        allprojects {
+           repositories {
+              jcenter()
+              google()
+              maven {
+      // TODO add this only if interested in getting SNAPSHOT releases
+      url 'https://oss.sonatype.org/content/repositories/snapshots' }
+      ... }
+        }
+        ...
+        dependencies {
+      ...
+      compile 'com.instabug.library:instabug:5.0.0.3.19-SNAPSHOT'
+      }
+      ...
 ```
 4. Create a new Application.java class that should look like this. Add your app token, and change the invocation event from this class.
 ```
-   ... import android.app.Application; import com.instabug.library.Instabug; import com.instabug.library.invocation.InstabugInvocationEvent; ... public  class MyApp extends Application { @Override  public void onCreate() { super.onCreate(); // You can change the invocation event to NONE, FLOATING_BUTTON, // SCREENSHOT_GESTURE, or TWO_FINGER_SWIPE_LEFT.  new Instabug.Builder(this, “YOUR_APP_TOKEN”) .setInvocationEvent(InstabugInvocationEvent.SHAKE) .build(); Instabug.setUnityEnabled(true); } }
+  ...
+        import android.app.Application;
+        import com.instabug.library.Instabug;
+        import com.instabug.library.invocation.InstabugInvocationEvent;
+        ...
+        public class MyApp extends Application {
+        @Override
+        public void onCreate() { super.onCreate();
+        // You can change the invocation event to NONE, FLOATING_BUTTON, // SCREENSHOT_GESTURE, or TWO_FINGER_SWIPE_LEFT.
+        new Instabug.Builder(this, "YOUR_APP_TOKEN")
+        .setInvocationEvent(InstabugInvocationEvent.SHAKE)
+        .build(); Instabug.setUnityEnabled(true);
+        } }
 ```
 5. Add the Application class name to the AndroidManifest.xml file.
 ```
-<manifest xmlns:android=“http://schemas.android.com/apk/res/android” ...> ... <application android:name=“.MyApp” ...> ... </application> ... </manifest>
+      <manifest xmlns:android="http://schemas.android.com/apk/res/android" ...> ...
+       <application android:name=".MyApp" ...> ...
+       </application>
+       ...
+       </manifest>
 ```
 
 
