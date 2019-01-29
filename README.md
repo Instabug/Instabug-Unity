@@ -25,26 +25,7 @@ For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.c
 
 2.  Export your Unity project by opening Build Settings from “File —> Build Settings”, and checking the Export button. Choose your desired path to save the project.
    
-3.  Open the exported project from Android Studio, and add the following changes to the build.gradle file.
-```
-        ...
-        allprojects {
-           repositories {
-              jcenter()
-              google()
-              maven {
-      // TODO add this only if interested in getting SNAPSHOT releases
-      url 'https://oss.sonatype.org/content/repositories/snapshots' }
-      ... }
-        }
-        ...
-        dependencies {
-      ...
-      compile 'com.instabug.library:instabug:5.0.0.3.19-SNAPSHOT'
-      }
-      ...
-```
-4. Create a new Application.java class that should look like this. Add your app token, and change the invocation event from this class.
+3.  Open the exported project from Android Studio, and create a new Application.java class that should look like this. Add your app token, and change the invocation event from this class.
 ```
   ...
         import android.app.Application;
@@ -60,7 +41,7 @@ For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.c
         .build(); Instabug.setUnityEnabled(true);
         } }
 ```
-5. Add the Application class name to the AndroidManifest.xml file.
+4. Add the Application class name to the AndroidManifest.xml file.
 ```
       <manifest xmlns:android="http://schemas.android.com/apk/res/android" ...> ...
        <application android:name=".MyApp" ...> ...
