@@ -26,7 +26,7 @@ For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.c
 2.  Export your Unity project by opening Build Settings from “File —> Build Settings”, and checking the Export button. Choose your desired path to save the project.
    
 3.  Open the exported project from Android Studio, and create a new Application.java class that should look like this. Add your app token, and change the invocation event from this class.
-```
+```java
   ...
         import android.app.Application;
         import com.instabug.library.Instabug;
@@ -42,7 +42,7 @@ For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.c
         } }
 ```
 4. Add the Application class name to the AndroidManifest.xml file.
-```
+```xml
       <manifest xmlns:android="http://schemas.android.com/apk/res/android" ...> ...
        <application android:name=".MyApp" ...> ...
        </application>
