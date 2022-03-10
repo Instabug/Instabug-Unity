@@ -1,73 +1,37 @@
-# **Instabug for Mobile Games**  
-Detailed bug reporting and in-app chat for mobile games made on Android, iOS, and Unity!
+# **Instabug for Unity**
 
+Detailed bug reporting and direct in-app chat with users for mobile games made with Unity on iOS and Android! :video_game:
 
-<img src="https://user-images.githubusercontent.com/9888943/41102891-337c4170-6a68-11e8-8b89-73f60ab6ad81.png" width="35%"/><img src="https://user-images.githubusercontent.com/9888943/41102892-339dab08-6a68-11e8-895c-89c5c92dc4ed.png" width="63%"/> 
+<img alt="Screen Shot 2022-03-09 at 12 21 43 PM" src="https://user-images.githubusercontent.com/36373152/157422399-b616d4cb-4b23-4ca1-b15f-7112ece47a3f.png" width="22%"><img alt="Screen Shot 2022-03-09 at 11 03 51 AM" src="https://user-images.githubusercontent.com/36373152/157422471-08a13308-21de-4049-874a-ae19396e1da0.png" width="76%">
 
+Let your users seamlessly report in-game bugs and feedback, and speed up your game development cycle with Instabug, thanks to the comprehensive metadata which we capture to help you identify the cause of bugs and squash them faster.
 
-Collect in-game bug reports and feedback and speed up your game development cycle with Instabug. Forward your bugs automatically to Trello, Jira, Slack, Github, Gitlab & more.
+For more info, you can visit [Instabug for Unity](https://www.instabug.com/platforms/unity "Instabug for Unity").
 
-For more info, visit Instabug for Unity on [Instabug.com](https://www.instabug.com/platforms/unity).
+## Installation
 
-## Installation (iOS)
+1. Download [Instabug-Unity](https://github.com/Instabug/Instabug-Unity/releases "Instabug-Unity") package.
+2. In your own Unity project, import the package by selecting: 
+Assets → Import Package → Custom Package from Unity editor’s menu OR double-clicking Instabug-Unity.unitypackage.
+3. Resolve dependencies (for Android).
 
-1.  Add Instabug for iOS on the [Asset Unity Store here](https://assetstore.unity.com/packages/tools/integration/instabug-for-ios-116191).
-   
-2.  Add an empty GameObject to your project, and add the InstabugiOS script component to it.
-   
-3.  Click on Add Component, search for InstabugiOS, and add it to the game object.
-   
-4.  Add your app token, and change the invocation event from Unity’s Inspector directly.
+## Initializing Instabug
 
-## Installation (Android)
+1. Create an empty GameObject and add `Instabug.cs` script as a component to it. The script is located in: Assets → Plugins → Instabug
+2. Enter your app token, which you can find on the dashboard, and choose the preferred Invocation Event from the inspector window.
+3. Add **Event System** component to the newly created GameObject (only if you do not already have an EventSystem game object in the hierarchy of the current scene).
 
-1.  Add Instabug for Android on the [Asset Unity Store here](https://assetstore.unity.com/packages/tools/integration/instabug-for-android-116200).
+:warning: For iOS builds, you may encounter a build error on some Xcode versions. To resolve it, you can simply set **Validate Workspace** to **Yes** in the Build Settings tab under Build Options in Xcode.
 
-2.  Export your Unity project by opening Build Settings from “File —> Build Settings”, and checking the Export button. Choose your desired path to save the project.
-   
-3.  Open the exported project from Android Studio, and create a new Application.java class that should look like this. Add your app token, and change the invocation event from this class.
-```
-  ...
-        import android.app.Application;
-        import com.instabug.library.Instabug;
-        import com.instabug.library.invocation.InstabugInvocationEvent;
-        ...
-        public class MyApp extends Application {
-        @Override
-        public void onCreate() { super.onCreate();
-        // You can change the invocation event to NONE, FLOATING_BUTTON, // SCREENSHOT_GESTURE, or TWO_FINGER_SWIPE_LEFT.
-        new Instabug.Builder(this, "YOUR_APP_TOKEN")
-        .setInvocationEvent(InstabugInvocationEvent.SHAKE)
-        .build(); Instabug.setUnityEnabled(true);
-        } }
-```
-4. Add the Application class name to the AndroidManifest.xml file.
-```
-      <manifest xmlns:android="http://schemas.android.com/apk/res/android" ...> ...
-       <application android:name=".MyApp" ...> ...
-       </application>
-       ...
-       </manifest>
-```
+## Migrating from versions prior to v10
 
-
- 
-  ## Steps
- 
-**1. Add Instabug to Your Game**
-See Installation steps above.
-
-**2. Shake The Phone** 
-Your users can shake their devices to report bugs or submit their feedback from within your app with zero interruption to their experience.
-
-**3. View Detailed Bug Reports**
-With each bug report your users submit, we automatically capture comprehensive metadata to help you identify the cause of errors and fix issues faster.
-
+1. Remove the Assets/Plugins directory that was previously imported.
+2. Follow the [installation steps](#installation).
 
 ## Documentation
 
-For more details about the supported APIs and how to use them, you can check our  [**Documentation**](https://docs.instabug.com/docs/unity).
+For more details about the supported APIs and how to use them, you can refer to our [docs](https://docs.instabug.com/docs/unity-overview "**docs**").
 
 ## Contact Us
 
-If you have any questions or feedback don’t hesitate to get in touch. You can reach us at any time through  **[support@instabug.com](mailto:support@instabug.com)**.
+If you have any questions or feedback, don’t hesitate to get in touch. You can reach out to us at any time through  [support@instabug.com](mailto:support@instabug.com).
